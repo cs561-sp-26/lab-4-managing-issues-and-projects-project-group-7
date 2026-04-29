@@ -48,7 +48,7 @@ Write one paragraph rationale here.
 | Daniel Kish       | 6 
 | Wei-Ying Huang    | 8 
 | Gerald Hendrix     | 6 
-| Name 4            | 3 
+| Saurav Kumar      | 6 
 | **Total**         | **XX** 
 
 ## Issues
@@ -57,7 +57,7 @@ Write one paragraph rationale here.
 |--------------------------------------------------------------------------------------------------|---------------------------|----------------------------|-------------|--------------|--------------|---------------
 | [#1](https://github.com/cs561-sp-26/lab-4-managing-issues-and-projects-project-group-7/issues/1) | Build Create Account Page | `feature/account_features` | Daniel K    | 3            | 4/29/26      | 4/29/26
 | [#2](https://github.com/cs561-sp-26/lab-4-managing-issues-and-projects-project-group-7/issues/2) | Build Login Page          | `feature/account_features` | Daniel K    | 3            | 4/29/26      | 4/29/26
-| [#3](https://github.com/cs561-sp-26/lab-4-managing-issues-and-projects-project-group-7/issues/3) | Add Playwright and test suite | `feature/`                 |     | 3            | 4/29/26      | 4/29/26
+| [#3](https://github.com/cs561-sp-26/lab-4-managing-issues-and-projects-project-group-7/issues/3) | Add Playwright and test suite | `feature/playwright-tests`   |  Saurav Kumar   | 3            | 4/29/26      | 4/29/26
 | [#4](https://github.com/cs561-sp-26/lab-4-managing-issues-and-projects-project-group-7/issues/4) | Add edit profile functionality | `feature/edit-profile` | Wei-Ying Huang | 2            | 4/29/26      | 4/29/26
 | [#5](https://github.com/cs561-sp-26/lab-4-managing-issues-and-projects-project-group-7/issues/5) | Build rounds page | `feature/` |    | 3            | 4/29/26      | 4/29/26
 | [#7](https://github.com/cs561-sp-26/lab-4-managing-issues-and-projects-project-group-7/issues/7) | Update index.html framework | `feature/html-framework` | Wei-Ying Huang  | 3            | 4/29/26      | 4/29/26
