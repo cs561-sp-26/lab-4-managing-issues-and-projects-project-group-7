@@ -39,7 +39,7 @@ GitHub Projects
 Write one paragraph rationale here.
 
 ## Jira or GitHub Project link
-[[Project link](url)](https://github.com/orgs/cs561-sp-26/projects/10)
+[Project link](https://github.com/orgs/cs561-sp-26/projects/10)
 
 ## Commits
 
