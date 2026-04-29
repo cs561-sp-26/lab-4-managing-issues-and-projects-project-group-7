@@ -4,10 +4,9 @@
 _You need to update this README file only once, when you have completed the lab._
 ## Team Members
 - Daniel Kish (Danielhk832)
-- Name 2 (GitHub ID 2)
+- Wei-Ying Huang (William-HuangWY)
 - Name 3 (GitHub ID 3)
 - Name 4 (GitHub ID 4)
-- Name 5 (GitHub ID 5)
 
 ### Pros of GitHub Projects
 - Pro 1
@@ -30,14 +29,13 @@ Write one paragraph rationale here.
 
 ## Commits
 
-| Name        | # Commits 
-|-------------| -----------
-| Daniel Kish | 5 
-| Name 2      | 8 
-| Name 3      | 5 
-| Name 4      | 3 
-| Name 5      | 2 
-| **Total**   | **30** 
+| Name              | # Commits 
+|-------------------| -----------
+| Daniel Kish       | 6 
+| Wei-Ying Huang    | 8 
+| Name 3            | 5 
+| Name 4            | 3 
+| **Total**         | **XX** 
 
 ## Issues
 
@@ -45,10 +43,10 @@ Write one paragraph rationale here.
 |--------------------------------------------------------------------------------------------------|---------------------------|----------------------------|-------------|--------------|--------------|---------------
 | [#1](https://github.com/cs561-sp-26/lab-4-managing-issues-and-projects-project-group-7/issues/1) | Build Create Account Page | `feature/account_features` | Daniel K    | 3            | 4/29/26      | 4/29/26
 | [#2](https://github.com/cs561-sp-26/lab-4-managing-issues-and-projects-project-group-7/issues/2) | Build Login Page          | `feature/account_features` | Daniel K    | 3            | 4/29/26      | 4/29/26
-| [#issue number](link)                                                                            |  | `feature/`                 | Daniel K    | 3            | 4/29/26      | 4/29/26
-| [#issue number](link)                                                                                       |  | `feature/` |     | 3            | 4/29/26      | 4/29/26
-| [#issue number](link)                                                                                       |  | `feature/` |    | 3            | 4/29/26      | 4/29/26
-| [#issue number](link)                                                                                       |  | `feature/` |     | 3            | 4/29/26      | 4/29/26
+| [#3](https://github.com/cs561-sp-26/lab-4-managing-issues-and-projects-project-group-7/issues/3) | Add Playwright and test suite | `feature/`                 |     | 3            | 4/29/26      | 4/29/26
+| [#4](https://github.com/cs561-sp-26/lab-4-managing-issues-and-projects-project-group-7/issues/4) | Add edit profile functionality | `feature/edit-profil` | Wei-Ying Huang | 2            | 4/29/26      | 4/29/26
+| [#5](https://github.com/cs561-sp-26/lab-4-managing-issues-and-projects-project-group-7/issues/5) | Build rounds page | `feature/` |    | 3            | 4/29/26      | 4/29/26
+| [#7](https://github.com/cs561-sp-26/lab-4-managing-issues-and-projects-project-group-7/issues/7) | Update index.html framework | `feature/html-framework` | Wei-Ying Huang  | 3            | 4/29/26      | 4/29/26
 
 
 ## Read.ai Planning Poker Meeting Report Link
