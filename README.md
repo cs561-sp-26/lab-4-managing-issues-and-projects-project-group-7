@@ -5,7 +5,7 @@ _You need to update this README file only once, when you have completed the lab.
 ## Team Members
 - Daniel Kish (Danielhk832)
 - Wei-Ying Huang (William-HuangWY)
-- Name 3 (GitHub ID 3)
+- Saurav Kumar (sauravk8400)
 - Name 4 (GitHub ID 4)
 
 ### Pros of GitHub Projects
