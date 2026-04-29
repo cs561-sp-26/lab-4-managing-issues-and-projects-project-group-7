@@ -28,7 +28,7 @@ We used GitHub Projects because it keeps all our repo code and issues in one pla
 GitHub Projects
 
 ## Rationale
-Write one paragraph rationale here.
+team members did not have much experience with Jira, so we opted for something more familiar: github.
 
 ## Jira or GitHub Project link
 [Project link](https://github.com/orgs/cs561-sp-26/projects/10)
