@@ -6,7 +6,7 @@ _You need to update this README file only once, when you have completed the lab.
 - Daniel Kish (Danielhk832)
 - Wei-Ying Huang (William-HuangWY)
 - Saurav Kumar (sauravk8400)
-- Name 4 (GitHub ID 4)
+- Gerald H (ghendrix-git)
 
 ### Pros of GitHub Projects
 - Everything in one place. Issues, pull requests, and tasks are tied together, so you’re not bouncing between tools.
@@ -37,11 +37,11 @@ Write one paragraph rationale here.
 
 | Name              | # Commits 
 |-------------------| -----------
-| Daniel Kish       | 6 
+| Daniel Kish       | 7 
 | Wei-Ying Huang    | 8 
 | Gerald Hendrix     | 6 
 | Saurav Kumar      | 6 
-| **Total**         | **XX** 
+| **Total**         | **27** 
 
 ## Issues
 
