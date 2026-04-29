@@ -25,25 +25,42 @@
     <!-- The TOP NAVIGATION BAR -->
     <header class="navbar"> 
         <a id="sLink" class="skip-link" tabindex="0">Skip to content</a>  
-        <button id="menuBtn" type="button" class="navbar-btn" title="Menu"
+        <button id="menuBtn" type="button" class="navbar-btn hidden" title="Menu"
             aria-controls="sideMenu" aria-label="Actions"
             aria-haspopup="true" aria-expanded="false">
             <span id="menuBtnIcon" class="navbar-btn-icon fas fa-bars"></span>
         </button>
-        <img src="images/sslogo.png" class="navbar-app-icon" 
+        <img src="images/sslogo.png" class="navbar-app-icon"
         alt="SpeedScore logo">
         <h1 id="appName" class="navbar-title">SpeedScore</h1> 
         <div class="navbar-right-items">
-            <button  id="searchBtn" type="button" class="navbar-btn" title="Search" 
+          <input id="searchBox" class="form-control hidden" 
+                 aria-label="Search Rounds" size="30"
+                 type="search" value="" id="searchRounds"
+                 onkeyup="searchRoundsTable(this.value)" 
+                 onsearch="searchRoundsTable(this.value)">
+          <button  id="searchBtn" type="button" class="navbar-btn hidden" title="Search" 
             aria-label="Search">
             <span class="navbar-btn-icon fas fa-search"></span>
-            </button>
-            <button id="profileBtn" type="button" class="navbar-btn" title="Edit Profile"
-            aria-label="Account Settings">
-            <img class="navbar-profile-pic" 
-                src="images/ChrisProfilePic.jpg" alt="User's profile picture">
-            </button>  
+          </button>
+          <button id="profileBtn" type="button" 
+            class="navbar-btn navbar-profile-btn hidden" 
+            aria-label="Account and Profile Settings">
+          </button> >  
         </div>
+        <!--THE SIDE MENU -->
+        <ul id="sideMenu" role="menu" class="sidemenu"
+        arial-labelledby="menuBtn">
+        <li role="menuitem" tabindex="-1">
+          Settings
+        </li>
+        <li role="menuitem" tabindex="-1">
+          About
+        </li>
+        <li role="menuitem" tabindex="-1">
+          Log Out
+        </li>
+      </ul>
     </header>
       <!--THE SIDE MENU -->
       <ul id="sideMenu" role="menu" class="sidemenu"
