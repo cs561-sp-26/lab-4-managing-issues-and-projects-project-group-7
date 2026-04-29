@@ -146,7 +146,6 @@ GlobalRoundErrBox.classList.add("hidden");
 GlobalFirstFocusableLogRoundItem.set(GlobalRoundDate);
 }
 
-
 /*************************************************************************
 * @function roundUpdatedClose CLICK Handler 
 * @desc 
@@ -234,5 +233,180 @@ if (GlobalUserData.rounds.length == 1) {
   GlobalRoundsTableCaption.textContent = "Table displaying 1 speedgolf round";
 } else {
   GlobalRoundsTableCaption.textContent = "Table displaying " + GlobalUserData.rounds.length + " speedgolf rounds";
+}
+}
+
+/*************************************************************************
+* @function editRound 
+* @desc 
+* Set to click handler of "View/Edit" button associated with each row of
+* "Rounds" table. Sets up the round mode form to enable users to view and
+* edit the data on the round on which they clicked, then transitions to
+* the round mode form modal dialog. The index of the round being edited
+* is saved to the global variable roundIndex so that data on this round
+* can be saved when the form is submitted. 
+* @param roundId the unique id of the round that was clicked by the user
+* @global globalRoundIndex: the index (in GlobalUserData.rounds of the 
+*         round to edit. Initialized in this function.
+* @global GlobalUserData: object containing the current user's data
+*************************************************************************/
+function editRound(roundId) {
+//Find current array index of this round
+
+for (GlobalRoundIndex = 0; GlobalRoundIndex < GlobalUserData.rounds.length; ++GlobalRoundIndex) {
+  if (GlobalUserData.rounds[GlobalRoundIndex].roundNum === roundId) {
+    break;
+  }
+}
+//Populate form with round data to be edited.
+fillRoundForm(GlobalUserData.rounds[GlobalRoundIndex]);
+//Display dialog
+transitionToDialog(GlobalRoundsModeDialog,"SpeedScore: Edit Round",prepEditRoundForm);
+}
+
+/*************************************************************************
+* @function logRound 
+* @desc 
+* Build a JavaScript object containing a new round data, save the
+* round to localStorage, update the "Rounds"table, return the user to 
+* "Rounds" mode page, and display a toast message indicating that a 
+* new round was logged.
+* @global GlobalLoginPage: The "Log In" page
+* @global GlobalRoundDate: The date field in "Log Round" form
+* @global GlobalRoundCourse: The course field in "Log Round" form
+* @global GlobalRoundType: The type field in "Log Round" form
+* @global GlobalRoundHoles: The holes field in "Log Round" form
+* @global GlobalRoundStrokes: The strokes field in "Log Round" form
+* @global GlobalRoundMinutes: The minutes field in "Log Round" form
+* @global GlobalRoundSeconds: The seconds field in "Log Round" form
+* @global GlobalRoundMinutes: The minutes field in "Log Round" form
+* @global GlobalRoundSGS: The SGS field in "Log Round" form
+* @global GlobalRoundNotes: The round updated toast notification
+* @global GlobalRoundUpdatedMsg: Reference to notification toast
+* @global GlobalRoundUpdatedMsg: The message field of the round updated toast
+*************************************************************************/
+function logRound() {
+//Create new object with form data
+const newRound = {
+  date: GlobalRoundDate.value,
+  course: GlobalRoundCourse.value,
+  type: GlobalRoundType.value,
+  holes: GlobalRoundHoles.value,
+  strokes: GlobalRoundStrokes.value,
+  minutes: GlobalRoundMinutes.value,
+  seconds: GlobalRoundSeconds.value,
+  SGS: GlobalRoundSGS.value,
+  notes: GlobalRoundNotes.value,
+  roundNum: ++(GlobalUserData.roundCount)
+};
+//Push round object to end of rounds array
+GlobalUserData.rounds.push(newRound);
+//Save to local storage
+localStorage.setItem(GlobalUserData.accountInfo.email,
+  JSON.stringify(GlobalUserData));
+//Reset form to prepare for next visit
+resetLogRoundForm();
+//Add new round to table
+addRoundToTable(GlobalUserData.rounds.length-1)
+//Transition back to mode page
+GlobalRoundUpdatedMsg.textContent = "New Round Logged!";
+GlobalRoundUpdated.classList.remove("hidden");
+transitionFromDialog(GlobalRoundsModeDialog);
+}
+
+/*************************************************************************
+* @function updateRound 
+* @desc 
+* Update JavaScript object associated with an existing round, save the
+* round to localStorage, update the "Rounds"table, return the user to 
+* "Rounds" mode page, and display a toast message indicating that a 
+* new round was logged.
+* @global GlobalRoundIndex: The index of the round to be edited;
+*         previously initialized in editRound()
+* @global GlobalRoundDate: The date field in "Log Round" form
+* @global GlobalRoundCourse: The course field in "Log Round" form
+* @global GlobalRoundType: The type field in "Log Round" form
+* @global GlobalRoundHoles: The holes field in "Log Round" form
+* @global GlobalRoundStrokes: The strokes field in "Log Round" form
+* @global GlobalRoundMinutes: The minutes field in "Log Round" form
+* @global GlobalRoundSeconds: The seconds field in "Log Round" form
+* @global GlobalRoundMinutes: The minutes field in "Log Round" form
+* @global GlobalRoundSGS: The SGS field in "Log Round" form
+* @global GlobalRoundNotes: The round updated toast notification
+* @global GlobalRoundUpdatedMsg: Reference to notification toast
+* @global GlobalRoundUpdatedMsg: The message field of the round updated toast
+*************************************************************************/
+function updateRound() {
+//Update existing round, which is located at userData.rounds[GlobalRoundIndex]
+GlobalUserData.rounds[GlobalRoundIndex].date = GlobalRoundDate.value;
+GlobalUserData.rounds[GlobalRoundIndex].course = GlobalRoundCourse.value;
+GlobalUserData.rounds[GlobalRoundIndex].type = GlobalRoundType.value;
+GlobalUserData.rounds[GlobalRoundIndex].holes = GlobalRoundHoles.value;
+GlobalUserData.rounds[GlobalRoundIndex].strokes = GlobalRoundStrokes.value;
+GlobalUserData.rounds[GlobalRoundIndex].minutes = GlobalRoundMinutes.value;
+GlobalUserData.rounds[GlobalRoundIndex].seconds = GlobalRoundSeconds.value;
+GlobalUserData.rounds[GlobalRoundIndex].SGS = GlobalRoundSGS.value;
+GlobalUserData.rounds[GlobalRoundIndex].notes = GlobalRoundNotes.value;
+//Write to local storage
+localStorage.setItem(GlobalUserData.accountInfo.email,
+  JSON.stringify(GlobalUserData));
+//Reset form to prepare for next visit
+resetLogRoundForm();
+//Add new round to table
+updateRoundInTable(GlobalRoundIndex);
+//Transition back to mode page
+roundUpdatedMsg.textContent = "Round Updated!";
+roundUpdated.classList.remove("hidden");
+transitionFromDialog(GlobalRoundsModeDialog);
+}
+
+/*************************************************************************
+* @function sortRoundsTable 
+* @desc 
+* Sort the rounds table in ascending or descending order by a given column.
+* Use w3.sortHTML to perform the sort. The function alternatively sorts
+* in ascending and descending order on successive calls.
+* @param colNum -- the integer 1-based index of the column to sort by
+* @global GlobalRoundsTableSortBtns: Array of buttons in col header that
+*         can be clicked 
+* @global GlobalRoundsTableSortableColHeaders: Array of refs to the 
+*         header col elements of the first three (sortable) cols
+* @global GlobalRoundsTableHeaderColLabels: Array of strings labeling 
+*         data in corresponding column
+*************************************************************************/
+function sortRoundsTable(colNum) {
+const sortOrder =  (GlobalRoundsTableSortBtns[colNum-1]
+  .getAttribute("aria-label").indexOf("ascending") != -1) ? 
+  "ascending" : "descending";
+const futureSortOrder = (sortOrder === "ascending") ? "descending" : "ascending";
+w3.sortHTML('#roundsTable','.row-item','td:nth-child(' + colNum + ')');
+for (let i = 1; i <=3; ++i) {
+  if (colNum === i) {
+    if (GlobalRoundsTableSortIcons[i-1].classList.contains("fa-sort")) {
+      GlobalRoundsTableSortIcons[i-1].classList.remove("fa-sort");
+    }
+    if (GlobalRoundsTableSortIcons[i-1].classList.contains("fa-sort-amount-down-alt")) {
+      GlobalRoundsTableSortIcons[i-1].classList.remove("fa-sort-amount-down-alt");
+    }
+    if (GlobalRoundsTableSortIcons[i-1].classList.contains("fa-sort-amount-down")) {
+      GlobalRoundsTableSortIcons[i-1].classList.remove("fa-sort-amount-down");
+    }
+    GlobalRoundsTableSortIcons[i-1].classList.add(
+      (sortOrder === "ascending" ? "fa-sort-amount-down-alt" : "fa-sort-amount-down"));
+    GlobalRoundsTableSortBtns[i-1].setAttribute("aria-label", 'Sort ' + 
+    futureSortOrder + ' by ' + GlobalRoundsTableHeaderColLabels[colNum-1]);
+    GlobalRoundsTableSortableColHeaders[i-1].setAttribute('aria-sort',sortOrder);
+  } else {
+    if (GlobalRoundsTableSortIcons[i-1].classList.contains("fa-sort-amount-down-alt")) {
+      GlobalRoundsTableSortIcons[i-1].classList.remove("fa-sort-amount-down-alt");
+    }
+    if (GlobalRoundsTableSortIcons[i-1].classList.contains("fa-sort-amount-down")) {
+      GlobalRoundsTableSortIcons[i-1].classList.remove("fa-sort-amount-down");
+    }
+    GlobalRoundsTableSortIcons[i-1].classList.add("fa-sort");
+    GlobalRoundsTableSortBtns[i-1].setAttribute("aria-label", 'Sort ascending by ' + 
+    GlobalRoundsTableHeaderColLabels[i-1]);
+    GlobalRoundsTableSortableColHeaders[i-1].setAttribute('aria-sort','none');
+  }
 }
 }
